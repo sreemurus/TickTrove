@@ -1,0 +1,104 @@
+
+
+
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.8em;
+        }
+        .payment-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-left: 200px;
+        }
+        .payment-button:hover {
+            background-color: #45a049;
+        }
+        .payment-button:active {
+            background-color: #3e8e41;
+        }
+
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            display: inline-block;
+            margin-right: 100px; /* Add margin around the button */
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+        .back-button:active {
+            background-color: #3e8e41;
+            border-color: #aaa;
+        }
+    </style>
+<title>Customer Details</title>
+<body>
+    <header>
+        <h1 style="text-align:center;">Customer Details</h1>
+    </header>
+    <main>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <a href="{% url 'cart:view_cart' %}" class="back-button">back</a>
+            <a href="{% url 'payment:initiate_payment' %}" class="payment-button">Payment</a>
+
+        </form>
+        {% if form.errors %}
+            <div class="error-message">
+                Please correct the errors below.
+            </div>
+        {% endif %}
+        {% if success_message %}
+            <div class="success-message">
+                {{ success_message }}
+            </div>
+        {% endif %}
+    </main>
+</body>
+

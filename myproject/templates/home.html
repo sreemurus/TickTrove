@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}TickTrove{% endblock %}
+{% block content %}
+{% if category %}
+<div>
+    <div class="row">
+        <div class="mx-auto">
+        <p class="text-center"><a href="{% url 'allproducts' %}" style="font-style:Monospace; font-size:30px;">Product Category</a> </p>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+<div class="mx-auto">
+{% if category %}
+    <img src="{{category.image.url}}" alt="{{category.name}}" style="width:1500px; height:500px;">
+</div>
+<div>
+    <h1 style="text-align:center; font-family: Courier; -webkit-text-fill-color: blue;  -webkit-text-stroke: 2px black;">{{category.name}}</h1>
+    <p>{{category.description}}</p>
+</div>
+
+
+{% else %}
+<div>
+    <div>
+    <h1 style="text-align:center; font-family: Times New Roman, Times, serif;  font-style: bold; color: #FF8C00;" >Welcome to TickTrove!!</h1>
+    <p style="text-align:center; font-family: Lucida Handwriting, cursive;">Explore endless possibilities with us. Happy shopping!"</p>
+  </div>
+</div>
+
+{% endif %}
+
+
+<!-- card css  -->
+<style>
+  /* Basic styling for demonstration purposes */
+  .product-card {
+    width: 300px;
+    height:300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+
+  .product-image {
+    width: 100%;
+    border-radius: 8px;
+  }
+  .product-title {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .product-description {
+    margin-top: 10px;
+    color: #666;
+  }
+  .product-price {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #002633;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .button:hover {
+    background-color: #64af3d;
+  }
+    @media screen and (max-width: 600px) {
+  .card {
+    max-width: 100%;
+    margin: 10px;
+  }
+
+</style>
+
+<!-- card html -->
+
+
+
+<div class="container">
+  <br>
+  <div class="row">
+    {% for product in products %}
+    <div class="col-9 col-sm-12 col-md-4">
+   <div class="card text-center" style="width: 18em;  margin-top: 20px; ">
+   <a href="{{product.get_url}}"><img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}" style="height:18rem; width:100%;"></a>
+  <div class="card-body">
+    <h4 style="font-family: revert-layer; font-style:oblique; font-size:14px;">{{product.name}}</h4>
+    <p>₹ {{product.price}}</p>
+      <a href="{{product.get_url}}" class="button">View</a>
+
+  </div>
+</div>
+  </div>
+   {% endfor %}
+
+</div>
+</div>
+ {% endblock %}
+

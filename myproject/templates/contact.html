@@ -1,0 +1,38 @@
+<!-- contact/templates/contact/contact.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Details</title>
+    <!-- Add any CSS stylesheets or JavaScript files if needed -->
+    <style>
+        /* Add your custom CSS styles here */
+        /* For example, to style the contact details container */
+        .contact-details {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        /* Style the headings and paragraphs */
+        h1, h2, p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-details">
+        <h1>Contact Details</h1>
+        <h2>Name:</h2>
+        <p>{{ contact.name }}</p>
+        <h2>Email:</h2>
+        <p>{{ contact.email }}</p>
+        <h2>Phone:</h2>
+        <p>{{ contact.phone }}</p>
+        <h2>Address:</h2>
+        <p>{{ contact.address }}</p>
+    </div>
+</body>
+</html>

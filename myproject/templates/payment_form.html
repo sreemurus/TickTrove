@@ -1,0 +1,120 @@
+<!-- templates/payment/payment_form.html -->
+{% include 'navbar.html' %}
+
+
+<style>
+
+/* payment_form.css */
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 250px;
+    padding: 0;
+}
+
+/* Container styles */
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+h1 {
+    font-size: 24px;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Paragraph styles */
+p {
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+    text-align: center;
+}
+
+/* Label styles */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+/* Input styles */
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Button styles */
+button[type="submit"] {
+    width: 100%;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Cancel link styles */
+.cancel-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cancel-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.cancel-link a:hover {
+    text-decoration: underline;
+}
+
+</style>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <link rel="stylesheet" href="payment_form.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Payment Details</h1>
+        <p>Total Cart Amount: {{ total_price }}</p>
+        <form method="post" action="{% url 'payment:initiate_payment' %}">
+            {% csrf_token %}
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" value="{{ total_price }}" required>
+            <button type="submit" class="submit-button">Pay Now</button>
+        </form>
+        <div class="cancel-link">
+            <a href="{% url 'cart:view_cart' %}">Cancel Payment</a>
+        </div>
+    </div>
+</body>
+</html>

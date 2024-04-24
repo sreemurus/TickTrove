@@ -1,0 +1,74 @@
+<!-- subscribe.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Subscription</title>
+
+    <style>
+ /* styles.css */
+body {
+    text-align: center; /* Center-align all content within the body */
+}
+
+.center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh; /* Take up full height of the viewport */
+}
+
+h1 {
+    margin-bottom: 20px; /* Add some space below the heading */
+}
+
+input[type="email"] {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.submit-button, .back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none; /* Remove underline for anchor elements */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-button:hover, .back-button:hover {
+    background-color: #0056b3;
+}
+
+</style>
+</head>
+<body>
+    <h1>Subscribe to Our Newsletter</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <div>{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Subscribe</button>
+    </form>
+
+    <a href="{% url 'allproducts' %}" class="back-button">Back</a>
+
+<script>
+    // script.js
+console.log('Script loaded successfully.');
+
+</script>
+</body>
+</html>

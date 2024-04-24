@@ -1,0 +1,65 @@
+<style>
+    /* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #007bff;
+}
+
+p {
+    color: #6c757d;
+}
+
+a {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+</style>
+
+
+<body>
+    <div class="container">
+        <h1>Welcome!</h1>
+
+         <a href="home.html" class="button">Back to Home</a>
+    </div>
+
+
+
+<script>
+
+
+document.getElementById('changeColorBtn').addEventListener('click', function() {
+    const container = document.querySelector('.container');
+    const colors = ['#ff7f0e', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#2ca02c', '#1f77b4'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    container.style.backgroundColor = randomColor;
+});
+
+</script>
